@@ -66,7 +66,7 @@ class Controller extends BaseController
     public function thread(Thread $thread)
     {
         $thread = Thread::where("id", $thread->id)->with(['comments' => function ($query) {
-            $query->orderBy('created_at', 'DESC');
+            $query->orderBy('created_at', 'asc');
         }])->firstOrFail();
         //dd($thread);
         return view('thread', ['thread' => $thread]);
