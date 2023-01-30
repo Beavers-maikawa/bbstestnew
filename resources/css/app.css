@@ -1,18 +1,25 @@
 @charset "utf-8";
 
 /* CSS Document */
-html {
-    font-family: 'Noto Sans JP', sans-serif;
-}
-
 body {
-    font-size: 1.2rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.125rem;
+    line-height: 2;
 }
 
 .container {
     min-height: 80vh;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.bb-1 {
+    border-bottom: 1px solid #808080;
+    padding-bottom: 20px;
+}
+
+.bb-1:last-of-type {
+    border-bottom: none;
 }
 
 input {
@@ -32,7 +39,7 @@ textarea {
     border: 1px solid #377f95;
     background: #fff;
     padding: 5px;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
 }
 
 textarea {
