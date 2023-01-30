@@ -1,0 +1,229 @@
+@charset "utf-8";
+
+/* CSS Document */
+html {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    font-size: 1.2rem;
+}
+
+.container {
+    min-height: 80vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+input {
+    padding: 5px;
+}
+
+input.disabled {
+    background-color: rgb(197, 197, 197);
+}
+
+input[type=text],
+input[type=search],
+input[type=email],
+textarea {
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid #377f95;
+    background: #fff;
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+textarea {
+    resize: none;
+    height: 10rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+button>a {
+    color: #fff;
+}
+
+button>a:hover {
+    color: #fff;
+}
+
+button {
+    padding: 5px 20px;
+    background: #087cc9;
+    color: #fff;
+    border-radius: 0;
+}
+
+input[type=submit] {
+    border-radius: 0;
+}
+
+.header {
+    width: 100%;
+    background-color: #d8e5e9;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+input[type=text]:disabled {
+    background-color: #ddd;
+}
+
+.searchformWrapper {
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #ddd;
+}
+
+.searchformWrapper form {
+    display: flex;
+}
+
+.searchformWrapper input,
+.searchformWrapper textarea {
+    border: 1px solid #377f95;
+}
+
+.searchformWrapper form button {
+    min-width: 100px;
+    margin-right: 5px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.threadCreatBtnArea {
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.footer {
+    width: 100%;
+    background-color: #d8e5e9;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top_list {
+    border-bottom: 1px solid #808080;
+    padding: 15px 0;
+}
+
+.top_list:first-of-type {
+    border-top: 1px solid #808080;
+}
+
+.top_list p {
+    margin: 1rem 10px;
+}
+
+.thread-id {
+    margin-right: 15px;
+}
+
+.thread-title {
+    margin-right: 15px;
+}
+
+.comment_list {
+    margin-left: 30px;
+}
+
+.comment_list li span {
+    margin-right: 15px;
+}
+
+.thread-title-detail {
+    padding: 10px 0;
+}
+
+.thread-title-detail p {
+    margin: 1rem 2rem;
+}
+
+.thread-title-detail p span {
+    margin-right: 15px;
+}
+
+.card-body p span {
+    margin-right: 15px;
+}
+
+.thread-date-detail {
+    text-align: right;
+    margin: 0;
+}
+
+.thread-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.comment-card {
+    margin-bottom: 15px;
+}
+
+.comment-date {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-form-header {
+    display: flex;
+    align-items: center;
+}
+
+.comment-form-header p {
+    margin: 0;
+}
+
+.comment-form {
+    margin-bottom: 20px;
+}
+
+.comment-btn-area {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.menuArea {
+    margin-bottom: 20px;
+}
+
+.search-title {
+    font-size: 1.7rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.mailForm {
+    margin: 30px 0;
+}
+
+.mailBtn {
+    margin: 20px 0;
+}
