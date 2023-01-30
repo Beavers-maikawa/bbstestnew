@@ -20,7 +20,7 @@
                     @csrf
                     <input type="search" placeholder="検索語句を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
                     <button class="btn-primary" type="submit">検索</button>
-                    <button class="btn-secondary">
+                    <button tyle="clear" class="btn-secondary">
                         <a href="{{ route('index') }}" class="text-white">
                             クリア
                         </a>

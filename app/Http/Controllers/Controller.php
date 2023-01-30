@@ -35,11 +35,14 @@ class Controller extends BaseController
             $spaceConversion = mb_convert_kana($search, 's');
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
             foreach ($wordArraySearched as $value) {
-                $query = Thread::whereHas('comments', function ($query) use ($value) {
-                    $query->where('commnet', 'like', '%' . $value . '%')->orWhere('name', 'like', '%' . $value . '%');
-                })->orWhere(function ($query) use ($value) {
-                    $query->where('title', 'like', '%' . $value . '%')->orWhere('content', 'like', '%' . $value . '%');
+                $query = Thread::Where(function ($query) use ($value) {
+                    $query->where('title', 'like', '%' . $value . '%')->orWhere('content', 'like', '%' . $value . '%')->orWhere('name', 'like', '%' . $value . '%');
                 });
+                // $query = Thread::whereHas('comments', function ($query) use ($value) {
+                //     $query->where('commnet', 'like', '%' . $value . '%')->orWhere('name', 'like', '%' . $value . '%');
+                // })->orWhere(function ($query) use ($value) {
+                //     $query->where('title', 'like', '%' . $value . '%')->orWhere('content', 'like', '%' . $value . '%');
+                // });
             }
             $threads = $query->orderBy('created_at', 'desc')->paginate(5);
         }
