@@ -14,6 +14,7 @@ use App\Models\Thread;
 use App\Models\Comment;
 use App\Mail\ContactSendmail;
 use App\Mail\ContactCommentSendmail;
+use Illuminate\Support\Facades\DB;
 
 class Controller extends BaseController
 {
@@ -29,19 +30,17 @@ class Controller extends BaseController
         $search = $request->input('search');
 
         //クエリビルダ
-        //$query = Thread::query();
+        $query = Thread::query();
 
         if ($search) {
             $spaceConversion = mb_convert_kana($search, 's');
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
             foreach ($wordArraySearched as $value) {
-                $query = Thread::Where(function ($query) use ($value) {
-                    $query->where('title', 'like', '%' . $value . '%')->orWhere('content', 'like', '%' . $value . '%')->orWhere('name', 'like', '%' . $value . '%');
-                });
-                // $query = Thread::whereHas('comments', function ($query) use ($value) {
-                //     $query->where('commnet', 'like', '%' . $value . '%')->orWhere('name', 'like', '%' . $value . '%');
+                $query->where(DB::raw('CONCAT(title,content,name)'), 'like', '%' . $value . '%');
+                // $query = $query->whereHas('comments', function ($query) use ($value) {
+                //     $query->where(DB::raw('CONCAT(title,commnet,name)'), 'like', '%' . $value . '%');
                 // })->orWhere(function ($query) use ($value) {
-                //     $query->where('title', 'like', '%' . $value . '%')->orWhere('content', 'like', '%' . $value . '%');
+                //     $query->where(DB::raw('CONCAT(title,content,name)'), 'like', '%' . $value . '%');
                 // });
             }
             $threads = $query->orderBy('created_at', 'desc')->paginate(5);
@@ -84,22 +83,26 @@ class Controller extends BaseController
     }
     public function sendMail(Thread $thread)
     {
+        session()->put('toEmail', $thread->email);
         return view('contact', ['thread' => $thread]);
     }
     public function send(ContactRequest $contactRequest)
     {
         $contact = $contactRequest->all();
-        Mail::to($contactRequest->toEmail)->send(new ContactSendmail($contact));
+        $toEmail = session('toEmail');
+        Mail::to($toEmail)->send(new ContactSendmail($contact));
         return redirect(route('index'));
     }
     public function sendMailToComment(Comment $comment)
     {
+        session()->put('toEmailComment', $comment->email);
         return view('contactcomment', ['comment' => $comment]);
     }
     public function sendComment(ContactToCommentRequest $contactToCommentRequest)
     {
         $contact = $contactToCommentRequest->all();
-        Mail::to($contactToCommentRequest->toEmail)->send(new ContactCommentSendmail($contact));
+        $toEmailComment = session('toEmailComment');
+        Mail::to($toEmailComment)->send(new ContactCommentSendmail($contact));
         return redirect(route('index'));
     }
 }

@@ -10,7 +10,6 @@
         Email:<input type="email" name="email" required><br>
         内容<textarea name="contact"></textarea><br>
         <button type="submit">送信する</button>
-        <input type="hidden" name="toEmail" value="{{$comment->email}}">
         <button>
             <a href="{{ route('thread',$comment->thread_id)}}">スレッドへ戻る</a>
         </button>

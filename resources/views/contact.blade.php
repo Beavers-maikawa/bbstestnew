@@ -14,7 +14,6 @@
         <button>
             <a href="{{ route('thread',$thread->id)}}">スレッドへ戻る</a>
         </button>
-        <input type="hidden" name="toEmail" value="{{$thread->email}}">
     </form>
 </div>
 @endsection
