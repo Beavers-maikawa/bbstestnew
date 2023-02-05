@@ -42,6 +42,16 @@ textarea {
     font-size: 1.125rem;
 }
 
+input[type="button"],
+input[type=search],
+input[type="text"],
+input[type="submit"],
+input[type="image"],
+textarea {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
 textarea {
     resize: none;
     height: 10rem;
