@@ -16,3 +16,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+git_id_rsa.pub
+git_id_rsa
