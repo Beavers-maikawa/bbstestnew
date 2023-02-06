@@ -60,6 +60,8 @@ class Controller extends BaseController
         $threads->content = $request->content;
         $threads->save();
 
+        $request->session()->regenerateToken();
+
         return redirect(route('index'));
     }
     public function thread(Thread $thread)
@@ -79,6 +81,8 @@ class Controller extends BaseController
         $comments->commnet = $request->comment;
         $comments->save();
 
+        $request->session()->regenerateToken();
+
         return redirect(route('thread', ['thread' => $request->thread_id]));
     }
     public function sendMail(Thread $thread)
@@ -91,6 +95,9 @@ class Controller extends BaseController
         $contact = $contactRequest->all();
         $toEmail = session('toEmail');
         Mail::to($toEmail)->send(new ContactSendmail($contact));
+
+        $contactRequest->session()->regenerateToken();
+
         return redirect(route('index'));
     }
     public function sendMailToComment(Comment $comment)
@@ -103,6 +110,9 @@ class Controller extends BaseController
         $contact = $contactToCommentRequest->all();
         $toEmailComment = session('toEmailComment');
         Mail::to($toEmailComment)->send(new ContactCommentSendmail($contact));
+
+        $contactToCommentRequest->session()->regenerateToken();
+
         return redirect(route('index'));
     }
 }
