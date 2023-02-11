@@ -18,13 +18,25 @@
         @foreach($threads as $thread)
         <li class="top_list">
             <ul>
-                <li>{{$thread->id}}：<a href="{{route('thread',$thread->id)}}">{{$thread->title}}</a> 投稿者：{{$thread->name}} {{$thread->created_at}}</li>
+                <li>{{$thread->id}}：<a href="{{route('thread',$thread->id)}}">{{$thread->title}}</a> 投稿者：{{$thread->name}} {{$thread->created_at}}
+                @php
+                if ((strtotime('now') - strtotime($thread->created_at)) < 60 * 60 * 24){
+                    echo '<img src="./images/new.gif" alt="new">';
+                }
+                @endphp
+                </li>
                 <!--<li>{!! nl2br(e($thread->content))!!}</li>-->
                 @if($thread->comments->isNotEmpty())
                 <li>
                     <ul class="comment_list">
                         @foreach($thread->comments as $comment)
-                        <li>返信 {{$comment->name}} {{$comment->created_at}}</li>
+                        <li>返信 {{$comment->name}} {{$comment->created_at}}
+                        @php
+                        if ((strtotime('now') - strtotime($comment->created_at)) < 60 * 60 * 24){
+                            echo '<img src="./images/new.gif" alt="new">';
+                        }
+                        @endphp
+                        </li>
                         @endforeach
                     </ul>
                 </li>

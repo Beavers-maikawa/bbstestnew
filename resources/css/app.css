@@ -149,7 +149,7 @@ ul {
 
 .top_list {
     border-bottom: 1px solid #808080;
-    padding: 15px 0;
+    padding: 15px 20px;
 }
 
 .top_list:first-of-type {
@@ -255,4 +255,21 @@ button,
 [type='reset'],
 [type='submit']{
     background: #087cc9;
+}
+a,a:hover,a:active{
+    color: #087cc9;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+li.top_list > ul > li{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+ul.comment_list > li{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
