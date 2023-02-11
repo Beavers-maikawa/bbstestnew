@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', [App\Http\Controllers\Controller::class, 'index'])->name('index');
-    Route::delete('/thread/{thread}',[App\http\Controllers\Controller::class,'delete_thread'])->name('delete_thread');
+    Route::delete('/thread/{thread}',[App\Http\Controllers\Controller::class,'delete_thread'])->name('delete_thread');
     Route::post('/', [App\Http\Controllers\Controller::class, 'thread_store'])->name('thread_store');
     Route::get('/thread/{thread}', [App\Http\Controllers\Controller::class, 'thread'])->name('thread')->where('thread', '[0-9]+');
     Route::post('/comment_store', [App\Http\Controllers\Controller::class, 'comment_store'])->name('comment_store');
