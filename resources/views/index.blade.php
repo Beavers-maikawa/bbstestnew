@@ -44,6 +44,12 @@
         コメント<textarea name="content" required></textarea><br>
         <button type="submit" value="">スレッド作成</button>
     </form>
+    @auth
+    <form action="{{ route('logout') }}" method="post" style="margin-top:20px;">
+        @csrf
+        <button type="submit">ログアウト</button>
+    </form>
+    @endauth
 </div>
 <div class="Page navigation example">
     {{$threads->links('pagination::bootstrap-4')}}

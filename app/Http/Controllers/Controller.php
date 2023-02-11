@@ -115,4 +115,19 @@ class Controller extends BaseController
 
         return redirect(route('index'));
     }
+    public function delete_thread(Thread $thread){
+        $threadId = $thread->id;
+        $thread = Thread::where("id", $threadId)->firstOrFail();
+        //dd($thread);
+        $thread->delete();
+        return redirect(route('index'));
+    }
+    public function delete_comment(Request $request)
+    {
+        $commentId = $request->comment_id;
+        $comment = Comment::where("id", $commentId)->firstOrFail();
+        $comment->delete();
+
+        return redirect(route('thread', ['thread' => $request->thread_id]));
+    }
 }

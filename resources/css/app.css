@@ -1,4 +1,6 @@
-@charset "utf-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* CSS Document */
 body {
@@ -247,4 +249,10 @@ ul {
 
 .pagination {
     margin-top: 30px;
+}
+button,
+[type='button'],
+[type='reset'],
+[type='submit']{
+    background: #087cc9;
 }
