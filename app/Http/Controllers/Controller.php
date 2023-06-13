@@ -24,7 +24,7 @@ class Controller extends BaseController
     {
         $threads = Thread::with(['comments' => function ($query) {
             $query->orderBy('created_at', 'DESC');
-        }])->select("*")->orderBy("created_at", "DESC")->paginate(5);
+        }])->select("*")->orderBy("created_at", "DESC")->paginate(10);
 
         //検索フォームで入力された値を取得する
         $search = $request->input('search');
