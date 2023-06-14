@@ -43,7 +43,7 @@ class Controller extends BaseController
                 //     $query->where(DB::raw('CONCAT(title,content,name)'), 'like', '%' . $value . '%');
                 // });
             }
-            $threads = $query->orderBy('created_at', 'desc')->paginate(5);
+            $threads = $query->orderBy('created_at', 'desc')->paginate(10);
         }
         //dd($threads);
         return view('index')->with([
