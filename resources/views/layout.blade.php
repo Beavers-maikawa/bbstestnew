@@ -6,6 +6,7 @@
   <title>建設掲示板テスト</title>
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+  <link rel="icon" href="{{asset('images/favicon.ico')}}">
   @vite(['resources/sass/app.scss','resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
